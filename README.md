@@ -1,9 +1,10 @@
 # rapoo-keyboard-driver
 Some bugfix for rapoo keyboard where some keys are invalid.
 
-Steps,
- # make
- # make install
- # ./installdriver.sh
+# Quick Usage
+Compile the driver module with make, make install and run ./installdriver.sh.
 
-Job done!
+Job done! Then enjoy typing!
+
+# Todo
+Loads hid-rapoo.ko module automically when system startup.
