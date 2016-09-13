@@ -6,5 +6,6 @@ Compile the driver module with make, make install and run ./installdriver.sh.
 
 Job done! Then enjoy typing!
 
-# Todo
-Loads hid-rapoo.ko module automically when system startup.
+# Notice
+After installing new kernel(contains compile and install kernel),
+you must reinstall hid-rapoo module again by "make install".
