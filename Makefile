@@ -28,8 +28,11 @@ endif
 
 install:
 	cp -f hid-rapoo.ko /lib/modules/`uname -r`/kernel/drivers/hid/
-	depmod
-	cat installdriver.sh >> ~/.bash_profile
+	@depmod
+	@grep -rn hid-rapoo ~/.bash_profile > /dev/null; \
+	if [ $$? -eq 1 ]; then \
+		cat installdriver.sh >> ~/.bash_profile; \
+	fi
 
 clean:
 	rm -rf *.o *~ core .depend .*.cmd *.ko *.mod.c .tmp_versions
