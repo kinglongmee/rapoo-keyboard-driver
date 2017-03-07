@@ -28,12 +28,9 @@ endif
 
 install:
 	cp -f hid-rapoo.ko /lib/modules/`uname -r`/kernel/drivers/hid/
+	cp -f install-rapoo-keyboard-driver.sh /usr/local/bin/
+	cp -f 40-rapoo-keyboard-driver.rules /etc/udev/rules.d/
 	@depmod
-	@grep -rn hid-rapoo ~/.bash_profile > /dev/null; \
-	if [ $$? -eq 1 ]; then \
-		cat installdriver.sh >> ~/.bash_profile; \
-	fi
-
 clean:
 	rm -rf *.o *~ core .depend .*.cmd *.ko *.mod.c .tmp_versions
 
