@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 #install rapoo v500 driver
 

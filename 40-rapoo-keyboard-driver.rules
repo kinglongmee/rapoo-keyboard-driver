@@ -1,0 +1,1 @@
+ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="1c4f", ATTR{idProduct}=="0059", RUN+="/usr/local/bin/install-rapoo-keyboard-driver.sh"
