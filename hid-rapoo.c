@@ -66,4 +66,3 @@ static void __exit hid_rapoo_exit(void)
 module_init(hid_rapoo_init);
 module_exit(hid_rapoo_exit);
 MODULE_LICENSE("GPL");
-
