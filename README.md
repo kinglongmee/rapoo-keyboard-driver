@@ -10,41 +10,49 @@ Job done! Then enjoy typing!
 
 # Install in UEFI Security Mode
 
-1. Compile.
-
-   ```bash
-   make && sudo make install
-   ```
-
-2. Generating key pairs with openssl and signing your kernel mod.
+1. Generating key pairs with openssl and signing your kernel mod.
 
    ```bash
    openssl req -new -x509 -newkey rsa:2048 -keyout MOK.priv -outform DER -out MOK.der -nodes -days 36500 -subj "/CN=Rapoo-Keyboard/"
    ```
 
-3. Import key.
+2. Import key.
 
    ```bash
    sudo mokutil --import MOK.der
    ```
 
-4. Reboot system and enroll key.
+3. Reboot system and enroll key.
 
-5. Insert mod.
+
+4. Compile.
+
+    ```bash
+    make && sudo make install
+    ```
+    Now your mod is installed in `/lib/modules/$(uname -r)/kernel/drivers/hid/`
+
+5. Sign mod.
 
    ```bash
-   sudo insmod ./hid-rapoo.ko
+   sudo kmodsign sha512 MOK.priv MOK.der /lib/modules/$(uname -r)/kernel/drivers/hid/hid-rapoo.ko
    ```
 
-6. Launch mod.
+6. Insert mod.
+
+   ```bash
+   sudo insmod /lib/modules/$(uname -r)/kernel/drivers/hid/hid-rapoo.ko
+   ```
+
+7. Launch mod.
 
    ```bash
    sudo modprobe hid-rapoo 
    ```
 
-7. Now you can use your keyboard.
+8. Now you can use your keyboard.
 
-8. DEBUG: print kernel logs
+9. DEBUG: print kernel logs
 
    ```bash
    dmesg
